@@ -1,0 +1,19 @@
+{
+  "name": "alllife-accident-cover-github-clean-pack",
+  "version": "1.0.0",
+  "description": "The goal of this prototype is to showcase improved UX/UI flows, reduce friction in the application process and demonstrate \"Smart Form\" logic to stakeholders and the marketing team.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18"
+  }
+}

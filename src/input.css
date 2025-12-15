@@ -1,0 +1,251 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Merriweather", serif;
+}
+
+@layer base {
+  body {
+    background-color: #f8fafc;
+    font-family: var(--font-sans); 
+  }
+}
+
+@layer components {
+  .bg-brand-blue { background-color: #0d2c54; } 
+  .text-brand-blue { color: #0d2c54; } 
+  .border-brand-blue { border-color: #0d2c54; }
+
+  .bg-brand-action { background-color: #1a73e8; }
+  .text-brand-action { color: #1a73e8; }
+  .border-brand-action { border-color: #1a73e8; }
+  
+  .bg-brand-secondary-blue { background-color: #e3f2fd; } 
+  .text-brand-secondary-blue { color: #42a5f5; } 
+  .bg-white-card { background-color: #ffffff; }
+
+  .hover\:bg-brand-action-dark:hover { background-color: #1558b8; }
+  .ring-brand-action:focus { --tw-ring-color: #1a73e8; }
+
+  .cover-meter-base {
+    width: 300px; 
+    height: 150px; 
+    border-radius: 150px 150px 0 0;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: conic-gradient(from 270deg at 50% 100%, 
+        #ef4444 0deg 29deg,  
+        white 29deg 30deg,     
+        #f97316 30deg 59deg, 
+        white 59deg 60deg,     
+        #fbbf24 60deg 89deg, 
+        white 89deg 90deg,     
+        #a3e635 90deg 119deg, 
+        white 119deg 120deg,  
+        #4ade80 120deg 149deg, 
+        white 149deg 150deg,     
+        #16a34a 150deg 180deg  
+    );
+  }
+  
+  .cover-meter-inner {
+    width: 220px; 
+    height: 110px; 
+    background: #f8fafc; 
+    border-radius: 110px 110px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 40px; 
+    box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+  }
+
+  .cover-meter-needle {
+    width: 6px;
+    height: 125px; 
+    background: #1e293b; 
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 147px; 
+    transform-origin: bottom center;
+    transition: transform 3s cubic-bezier(0.2, 0.8, 0.2, 1); 
+    transform: rotate(-90deg); 
+    z-index: 10;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+  
+  .cover-meter-needle::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #1e293b;
+    border-radius: 50%;
+    bottom: -10px;
+    left: -7px;
+  }
+
+  .rotate-green { transform: rotate(75deg) !important; } 
+  .rotate-red { transform: rotate(-60deg) !important; } 
+
+  .hover-pop {
+    transition: all 0.3s ease;
+  }
+  .hover-pop:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  .hover-card-strong {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid transparent;
+  }
+  .hover-card-strong:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: #1a73e8;
+    background-color: #f8fbff;
+  }
+
+  .btn-grow {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .btn-grow:hover {
+    transform: scale(1.05);
+  }
+  .btn-grow:active {
+    transform: scale(0.95);
+  }
+  
+  .button-link {
+    display: inline-block;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+  
+  .ticker-move {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 105s linear infinite;
+  }
+  
+  .ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+  }
+
+  .notification-toast {
+    animation: slideInLeft 0.5s ease-out forwards;
+  }
+  .notification-exit {
+    animation: fadeOut 0.5s ease-out forwards;
+  }
+  
+  input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      background: transparent;
+  }
+  input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #1a73e8;
+      cursor: pointer;
+      margin-top: -8px; 
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      cursor: pointer;
+      background: #cbd5e1;
+      border-radius: 2px;
+      z-index: 1;
+  }
+  input[type=range]::-moz-range-thumb {
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #1a73e8;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 4px;
+      cursor: pointer;
+      background: #cbd5e1;
+      border-radius: 2px;
+  }
+
+  .input-highlight {
+    background-color: #fffbeb !important; 
+    border-color: #fbbf24 !important;
+    --tw-ring-color: #fef3c7 !important;
+    box-shadow: 0 0 0 2px var(--tw-ring-color) !important;
+    transition: all 0.2s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .step-connector {
+    position: absolute;
+    left: 28px;
+    top: 3.5rem;
+    bottom: -1rem;
+    width: 2px;
+    background-color: #e2e8f0;
+    z-index: 0;
+  }
+  .last-step .step-connector {
+    display: none;
+  }
+}

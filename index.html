@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <!-- Developed by Tseka Junior, Lead Gen -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllLife - R25k Accidental Death Cover</title>
+
+    <link rel="icon" href="images/Faion.jpg" type="image/jpeg">
+    <link href="src/output.css" rel="stylesheet">
+    
+</head>
+<body class="antialiased flex flex-col min-h-screen pb-20 md:pb-0">
+
+    <header class="bg-brand-blue shadow-md sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14 md:h-16">
+                <div class="flex-shrink-0">
+                    <img 
+                        src="images/alllife_logo.png" 
+                        alt="AllLife" 
+                        class="h-9 md:h-11 w-auto bg-white p-1.5 md:p-2 rounded-md shadow-sm cursor-pointer hover:opacity-90 transition-opacity"
+                        onclick="switchScreens('landingPage')"
+                        onerror="this.src='https://placehold.co/120x50?text=AllLife'; this.style.backgroundColor='white';">
+                </div>
+                <div>
+                    <button onclick="toggleFuneralModal()" class="flex items-center gap-2 text-white hover:text-blue-200 transition text-xs md:text-sm font-semibold border border-blue-800 bg-blue-900/50 px-3 py-1.5 rounded-lg hover:bg-blue-800/80">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            <span class="md:hidden">Funeral Costs</span>
+                            <span class="hidden md:inline">Funeral Cost Estimator</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="angryRedBox" class="hidden fixed top-24 right-4 bg-red-600 text-white p-4 rounded-lg shadow-xl z-50 animate-bounce"></div>
+
+    <main class="flex-grow max-w-6xl mx-auto p-3 sm:p-6 lg:p-8 mt-2 md:mt-4 w-full">
+        <section id="landingPage" class="animate-fade-in">
+            <div class="relative rounded-2xl md:rounded-2xl shadow-2xl overflow-hidden mb-0 md:mb-4 h-64 md:h-96"> 
+                <img src="images/landingPage.avif" 
+                     alt="Family" 
+                     class="absolute inset-0 w-full h-full object-cover z-0">
+                <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent z-10"></div>
+                
+                <div class="relative text-left z-20 p-6 md:p-16 h-full flex flex-col justify-end md:justify-center">
+                    <h1 class="text-2xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-lg mb-2 md:mb-0">
+                        Get R25,000 Accidental Death<br class="md:hidden"> Cover. For 12 Months. On Us.
+                    </h1>
+                    <p class="hidden md:block mt-4 text-xl text-white font-medium drop-shadow-md max-w-lg">
+                        Peace of mind for you and your family, at <strong>zero cost to you</strong>. Find out if you qualify in 60 seconds.
+                    </p>
+                </div>
+            </div>
+            <div class="md:hidden relative z-30 mx-6 mt-4 mb-6">
+                <div class="bg-blue-50/95 backdrop-blur-sm rounded-xl shadow-lg p-4 text-center border border-blue-100">
+                    <p class="text-brand-blue text-sm leading-relaxed font-medium">
+                        Peace of mind for you and your family, at <strong class="font-bold">zero cost to you</strong>. Find out if you qualify in 60 seconds.
+                    </p>
+                </div>
+            </div>
+            <div class="hidden md:block mb-10 text-center">
+                <button id="mainStartBtn" class="bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 md:py-3 px-8 rounded-full shadow-lg text-lg transition duration-300 btn-grow w-full md:w-auto active:scale-95">
+                    Check if I Qualify
+                </button>
+            </div>
+            <div class="bg-white text-slate-900 rounded-xl shadow-md p-2 md:p-4 mb-6 md:mb-10 mx-0 md:mx-4 flex items-center overflow-hidden border-2 border-slate-300 border-l-8 border-l-slate-900">
+                <div class="flex-shrink-0 bg-slate-900 text-white px-2 py-1 md:px-3 md:py-1 rounded text-[10px] md:text-xs font-bold uppercase tracking-wider mr-2 md:mr-3 shadow-sm">
+                    FACTS
+                </div>
+                <div class="ticker-wrap">
+                    <div class="ticker-move">
+                        <span id="scrollingTextThing" class="text-sm md:text-lg font-extrabold tracking-wide text-slate-800"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white-card rounded-xl shadow-lg p-4 md:p-10">
+                <h2 class="text-xl md:text-3xl font-bold text-center text-brand-blue mb-2">How It Works</h2>
+                <p class="text-center text-slate-400 text-xs md:text-sm mb-6 md:mb-10">(Click on a step below to jump directly to it)</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 text-center mb-8 md:mb-12 relative">
+                
+                    <div onclick="switchScreens('checkingPage')" class="hover-pop relative flex flex-row md:flex-col items-center p-4 md:p-6 rounded-lg bg-slate-50 border border-slate-100 cursor-pointer text-left md:text-center gap-4 md:gap-0 z-10">
+                        <span class="absolute top-3 right-3 bg-blue-100 text-brand-blue text-xs font-bold px-2 py-1 rounded hidden md:block">Step 1</span>
+                        <div class="step-connector"></div>
+                        
+                        <span class="md:hidden font-bold text-slate-300 text-3xl italic mr-2 w-6 text-center">1</span>
+
+                        <div class="flex-shrink-0 flex items-center justify-center h-14 w-14 md:h-20 md:w-20 rounded-full bg-brand-secondary-blue text-brand-blue md:mb-4 shadow-sm z-10 bg-white md:bg-brand-secondary-blue border-4 border-slate-50 md:border-0">
+                            <svg class="h-6 w-6 md:h-10 md:w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-base md:text-xl font-bold text-brand-blue mb-0 md:mb-2">Quick Check</h3>
+                            <p class="text-slate-600 text-xs md:text-base">Answer a few simple questions.</p>
+                        </div>
+                    </div>
+                
+                    <div onclick="switchScreens('checkingPage')" class="hover-pop relative flex flex-row md:flex-col items-center p-4 md:p-6 rounded-lg bg-slate-50 border border-slate-100 cursor-pointer text-left md:text-center gap-4 md:gap-0 z-10">
+                        <span class="absolute top-3 right-3 bg-blue-100 text-brand-blue text-xs font-bold px-2 py-1 rounded hidden md:block">Step 2</span>
+                        <div class="step-connector"></div>
+
+                        <span class="md:hidden font-bold text-slate-300 text-3xl italic mr-2 w-6 text-center">2</span>
+
+                        <div class="flex-shrink-0 flex items-center justify-center h-14 w-14 md:h-20 md:w-20 rounded-full bg-brand-secondary-blue text-brand-blue md:mb-4 shadow-sm z-10 bg-white md:bg-brand-secondary-blue border-4 border-slate-50 md:border-0">
+                            <svg class="h-6 w-6 md:h-10 md:w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-base md:text-xl font-bold text-brand-blue mb-0 md:mb-2">See Your Status</h3>
+                            <p class="text-slate-600 text-xs md:text-base">Instantly see your 'Cover Meter'.</p>
+                        </div>
+                    </div>
+                    
+                    <div onclick="goToAppPart()" class="last-step hover-pop relative flex flex-row md:flex-col items-center p-4 md:p-6 rounded-lg bg-slate-50 border border-slate-100 cursor-pointer text-left md:text-center gap-4 md:gap-0 z-10">
+                        <span class="absolute top-3 right-3 bg-blue-100 text-brand-blue text-xs font-bold px-2 py-1 rounded hidden md:block">Step 3</span>
+                        <span class="md:hidden font-bold text-slate-300 text-3xl italic mr-2 w-6 text-center">3</span>
+
+                        <div class="flex-shrink-0 flex items-center justify-center h-14 w-14 md:h-20 md:w-20 rounded-full bg-yellow-100 text-yellow-600 md:mb-4 shadow-sm ring-4 ring-yellow-50 z-10 bg-white md:bg-yellow-100 border-4 border-slate-50 md:border-0">
+                            <svg class="h-6 w-6 md:h-10 md:w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-base md:text-xl font-bold text-brand-blue mb-0 md:mb-2">Activate Cover</h3>
+                            <p class="text-slate-600 text-xs md:text-base">Activate instantly online.</p>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="mb-8 md:mb-12 relative rounded-xl overflow-hidden shadow-xl group cursor-pointer hover:shadow-2xl transition-all" onclick="toggleFuneralModal()">
+                    <img src="images/casket.jpg" 
+                         alt="Dignified funeral service" 
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                         onerror="this.style.display='none'; this.parentElement.style.background = 'linear-gradient(to right, #0f172a, #1e3a8a)';">
+                    
+                    <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/80 to-brand-blue/60"></div>
+
+                    <div class="absolute right-0 top-0 h-full w-1/3 bg-white/5 skew-x-12 transform origin-bottom-left transition-opacity group-hover:opacity-20"></div>
+
+                    <div class="relative z-10 p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 text-white">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-white/10 p-3 rounded-full backdrop-blur-md border border-white/20 shadow-inner">
+                                <svg class="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="font-bold text-lg md:text-xl text-white">Do you know the true cost of a funeral?</h3>
+                                <p class="text-slate-300 text-xs md:text-sm">Use our calculator to estimate expenses and see how much you need.</p>
+                            </div>
+                        </div>
+                        <button class="bg-brand-action hover:bg-brand-action-dark text-white font-bold py-2 px-6 rounded-lg shadow-lg text-sm transition transform group-hover:scale-105 whitespace-nowrap w-full md:w-auto border border-white/10">
+                            Calculate Now
+                        </button>
+                    </div>
+                </div>
+                 
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-8 border-t border-slate-100 pt-6 md:pt-10">
+                    
+                    <div class="flex flex-col gap-3 md:gap-6">
+                    <div class="hover-card-strong flex flex-row md:flex-row gap-3 md:gap-4 bg-white border border-slate-100 rounded-xl p-3 md:p-5 shadow-sm items-start">
+                            <div class="flex-shrink-0">
+                                <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-blue-50 text-brand-action flex items-center justify-center">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-blue text-sm md:text-lg mb-1">What is Accidental DeathCover?</h4>
+                                <p class="text-slate-600 text-xs md:text-sm leading-relaxed">This policy pays out for any accidental death. This includes things like car accidents, slips and falls, drowning, fire-related accidents or violence.</p>
+                            </div>
+                 </div>
+
+                <div class="hover-card-strong flex flex-row md:flex-row gap-3 md:gap-4 bg-white border border-slate-100 rounded-xl p-3 md:p-5 shadow-sm items-start">
+                    <div class="flex-shrink-0">
+                                <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-blue-50 text-brand-action flex items-center justify-center">
+                                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-blue text-sm md:text-lg mb-1">No Premiums for 12 Months</h4>
+                                <p class="text-slate-600 text-xs md:text-sm leading-relaxed">This cover is yours for a full year. There are <strong>no premiums and no cost</strong> to you. No strings attached.</p>
+                            </div>
+                    </div>
+                </div>
+
+                    <div class="bg-emerald-50 border border-emerald-100 rounded-xl p-3 md:p-6 flex flex-col justify-center shadow-sm hover:shadow-lg transition-shadow duration-300">
+                        <div class="flex items-center gap-2 md:gap-3 mb-2 md:mb-4">
+                            <div class="bg-emerald-100 p-1.5 md:p-2 rounded-full">
+                                <svg class="w-5 h-5 md:w-6 md:h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                            </div>
+                            <h4 class="font-bold text-emerald-800 text-base md:text-xl">Why Is This Important?</h4>
+                        </div>
+                        
+                        <p class="text-emerald-700 mb-2 md:mb-4 font-medium text-xs md:text-base">In South Africa, accidents are a daily reality:</p>
+                        <ul class="space-y-1 md:space-y-3">
+                            <li class="flex items-start gap-2 md:gap-3 text-emerald-800 text-xs md:text-sm">
+                                <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path></svg>
+                                South Africa has one of the highest road accident rates in the world.
+                            </li>
+                            <li class="flex items-start gap-2 md:gap-3 text-emerald-800 text-xs md:text-sm">
+                                <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path></svg>
+                                Accidents at home or work, like slips and falls, are tragically common.
+                            </li>
+                            <li class="flex items-start gap-2 md:gap-3 text-emerald-800 text-xs md:text-sm">
+                                <svg class="w-4 h-4 md:w-5 md:h-5 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"></path></svg>
+                                Unforeseen events can leave a family financially vulnerable. This cover provides a crucial safety net.
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-6 md:mt-12">
+                    <button id="bottomStartBtn" class="btn-grow w-full md:w-auto bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 md:py-4 px-12 rounded-full shadow-lg text-lg md:text-xl transition duration-300 active:scale-95">
+                        See If I Qualify
+                    </button>
+                </div>
+
+                
+                <div class="max-w-4xl mx-auto px-4 md:px-6 mb-12 md:mb-20 mt-6 md:mt-12 border-t border-slate-200 pt-16 md:pt-20">
+    <h2 class="text-2xl md:text-2xl font-bold text-center text-brand-blue mb-2">Frequently Asked Questions</h2>
+    <p class="text-center text-slate-500 mb-8 md:mb-10 text-sm md:text-base">Everything you need to know about your free cover.</p>
+
+    <div class="space-y-3 md:space-y-4">
+        
+        <details class="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+            <summary class="flex justify-between items-center font-bold text-brand-blue cursor-pointer p-4 md:p-5 list-none">
+                <span>Is this really free? What's the catch?</span>
+                <span class="transition group-open:rotate-180">
+                    <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+            </summary>
+            <div class="text-slate-600 text-sm md:text-base px-4 md:px-5 pb-4 md:pb-5 leading-relaxed">
+                Yes, it is 100% free to you. AllLife is covering the cost of the premiums for you for a full 12 months. There are no debit orders and no hidden costs. We do this to introduce you to our brand and show you the value of having insurance.
+            </div>
+        </details>
+
+        <details class="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+            <summary class="flex justify-between items-center font-bold text-brand-blue cursor-pointer p-4 md:p-5 list-none">
+                <span>What exactly does "Accidental Death Cover" mean?</span>
+                <span class="transition group-open:rotate-180">
+                    <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+            </summary>
+            <div class="text-slate-600 text-sm md:text-base px-4 md:px-5 pb-4 md:pb-5 leading-relaxed">
+                This policy pays out R25,000 in the event of accidental death. This covers unforeseen events such as motor vehicle accidents, pedestrian accidents, slips and falls, or violence. It does not cover death resulting from natural causes (like illness) or suicide.
+            </div>
+        </details>
+        <details class="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+            <summary class="flex justify-between items-center font-bold text-brand-blue cursor-pointer p-4 md:p-5 list-none">
+                <span>What happens after the 12 months are up?</span>
+                <span class="transition group-open:rotate-180">
+                    <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+            </summary>
+            <div class="text-slate-600 text-sm md:text-base px-4 md:px-5 pb-4 md:pb-5 leading-relaxed">
+                Your free cover will automatically expire after 12 months. There is no obligation to continue. We may contact you before it expires to offer you the option to extend your cover or upgrade to a comprehensive policy, but the choice is entirely yours.
+            </div>
+        </details>
+        <details class="group bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+            <summary class="flex justify-between items-center font-bold text-brand-blue cursor-pointer p-4 md:p-5 list-none">
+                <span>How do I claim?</span>
+                <span class="transition group-open:rotate-180">
+                    <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                </span>
+            </summary>
+            <div class="text-slate-600 text-sm md:text-base px-4 md:px-5 pb-4 md:pb-5 leading-relaxed">
+                In the unfortunate event of a claim, your beneficiary needs to contact AllLife support. They will need to provide your ID number, the death certificate and a police report (since it is an accidental claim). We aim to pay out valid claims within 48 hours of receiving all documents.
+            </div>
+        </details>
+    </div>
+    </div>
+    </div></section>
+
+
+    <section id="checkingPage" class="hidden">
+            <div class="bg-white-card rounded-xl shadow-lg overflow-hidden">
+                <div class="h-32 md:h-40 w-full relative">
+                    <img src="images/2statusPage.avif" 
+                         alt="Protected Family" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-blue/60 flex items-center justify-center">
+
+                        <h3 class="font-display text-white text-xl md:text-3xl font-bold px-4 text-center drop-shadow-md">Protecting what matters most</h3>
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-10">
+                    <button class="text-sm text-brand-action hover:underline mb-6 font-semibold" onclick="switchScreens('landingPage')">&larr; Back to Home</button>
+                    <h2 class="text-xl md:text-3xl font-bold text-center text-brand-blue mb-6 md:mb-8">Let's Check Your Status</h2>
+                    
+                <div class="max-w-lg mx-auto">
+                    <div class="space-y-4 md:space-y-6">
+                            <div>
+                                <label for="ageInput" class="block text-sm font-bold text-slate-700 mb-1">How old are you?</label>
+                                <input type="number" id="ageInput" name="age" class="w-full rounded-lg border-slate-300 shadow-sm focus:border-brand-action focus:ring-brand-action p-3 md:p-3 border text-base" placeholder="e.g., 35" required>
+                            </div>
+
+                            <div>
+                                <label for="contactInput" class="block text-sm font-bold text-slate-700 mb-1">Contact Number</label>
+                                <input type="tel" id="contactInput" name="contact" class="w-full rounded-lg border-slate-300 shadow-sm focus:border-brand-action focus:ring-brand-action p-3 md:p-3 border text-base" placeholder="082 123 4567" required>
+                            </div>
+
+                            <div>
+                                <label for="altContactInput" class="block text-sm font-bold text-slate-700 mb-1">Alternative Contact Number <span class="text-xs font-normal text-slate-500">(Optional)</span></label>
+                                <input type="tel" id="altContactInput" name="alt-contact" class="w-full rounded-lg border-slate-300 shadow-sm focus:border-brand-action focus:ring-brand-action p-3 md:p-3 border text-base">
+                            </div>
+
+                            <div>
+                                <label for="emailInput" class="block text-sm font-bold text-slate-700 mb-1">Email Address <span class="text-xs font-normal text-slate-500">(Optional)</span></label>
+                                <input type="email" id="emailInput" name="email-check" class="w-full rounded-lg border-slate-300 shadow-sm focus:border-brand-action focus:ring-brand-action p-3 md:p-3 border text-base" placeholder="you@example.com">
+                            </div>
+
+                            <div>
+                                <label for="salaryInput" class="block text-sm font-bold text-slate-700 mb-1">How much do you earn per month?</label>
+                                <select id="salaryInput" name="salary" class="w-full rounded-lg border-slate-300 shadow-sm focus:border-brand-action focus:ring-brand-action p-3 md:p-3 border text-base" required>
+                                    <option value="">Please select</option>
+                                    <option value="<10k">R2,500 - R9,999</option>
+                                    <option value="10k-19k">R10,000 - R19,999</option>
+                                    <option value="20k-29k">R20,000 - R29,999</option>
+                                    <option value="30k+">R30,000+</option>
+                                </select>
+                            </div>
+
+                    <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Are you a South African citizen?</label>
+                            <div class="flex gap-4 md:gap-6">
+                                <label class="flex items-center p-3 border border-slate-300 rounded-lg w-full cursor-pointer hover:bg-slate-50 active:bg-slate-100">
+                                        <input type="radio" name="citizen" id="citizenYes" value="yes" class="h-5 w-5 text-brand-action border-slate-300 focus:ring-brand-action" checked>
+                                        <span class="ml-2 text-sm font-medium text-slate-700">Yes</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-slate-300 rounded-lg w-full cursor-pointer hover:bg-slate-50 active:bg-slate-100">
+                                        <input type="radio" name="citizen" id="citizenNo" value="no" class="h-5 w-5 text-brand-action border-slate-300 focus:ring-brand-action">
+                                        <span class="ml-2 text-sm font-medium text-slate-700">No</span>
+                                </label>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-6 md:mt-8">
+                            <button id="checkCoverBtn" class="btn-grow w-full md:w-auto bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 md:py-4 px-10 rounded-lg shadow-lg text-lg transition duration-300 active:scale-95">
+                                Show Cover I Qualify For
+                            </button>
+                    </div>
+                    </div>
+
+                    <div id="resultsArea" class="hidden mt-8 md:mt-10 border-t-2 border-slate-100 pt-8 md:pt-10 text-center animate-fade-in">
+                        
+                        <div class="flex justify-center mb-4 md:mb-6 scale-90 md:scale-100 origin-top">
+                            <div class="cover-meter-base">
+                                <div class="cover-meter-inner"></div>
+                                <div id="spinnyNeedle" class="cover-meter-needle"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="resultWords" class="mb-6 md:mb-8"></div>
+                        <div id="resultButtons" class="flex flex-col md:flex-row gap-3 md:gap-4 justify-center items-center"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="appPage" class="hidden">
+            <div class="bg-white-card rounded-xl shadow-lg overflow-hidden">
+                <div class="h-48 md:h-80 w-full relative">
+                    <img src="images/3appPage.avif" 
+                         alt="Mother holding child safe" 
+                         class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-blue/40 to-brand-blue/90 flex items-center justify-center">
+                        <h3 class="font-display text-white text-2xl md:text-4xl font-bold px-6 text-center drop-shadow-md leading-normal">
+                            Almost There...<br>
+                            <span class="text-blue-100 font-normal text-xl md:text-3xl mt-2 block font-sans">One last step to secure their future.</span>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="p-4 md:p-10">
+                    <button id="goBackBtn" class="text-sm text-brand-action hover:underline mb-6 font-semibold" onclick="switchScreens('landingPage')">&larr; Back to Home</button>
+                    
+                    <div id="bouncerDiv" class="mb-8 md:mb-10 hidden relative z-20">
+                        <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 md:p-8 shadow-xl">
+                            <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+                                <div class="bg-brand-blue text-white rounded-full h-6 w-6 md:h-8 md:w-8 flex items-center justify-center font-bold text-xs md:text-sm">1</div>
+                                <h3 class="text-xl md:text-2xl font-bold text-brand-blue">Quick Eligibility Check</h3>
+                            </div>
+                            <p class="text-slate-600 mb-4 md:mb-6 text-sm md:text-base">Before we activate your cover, we just need to verify a few quick details.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4 md:mb-6">
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-1">Age</label>
+                                    <input type="number" id="gateAge" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base" placeholder="e.g. 35">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-1">Monthly Income</label>
+                                    <select id="gateSalary" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base">
+                                        <option value="">Please select</option>
+                                        <option value="<10k">R2,500 - R9,999</option>
+                                        <option value="10k-19k">R10,000 - R19,999</option>
+                                        <option value="20k-29k">R20,000 - R29,999</option>
+                                        <option value="30k+">R30,000+</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-slate-700 mb-1">SA Citizen?</label>
+                                    <select id="gateCitizen" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base">
+                                        <option value="">Please select</option>
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button onclick="checkEligibility()" class="w-full bg-brand-blue hover:bg-slate-800 text-white font-bold py-3 rounded-lg transition shadow-md active:scale-95">
+                                Show Cover I Qualify For
+                            </button>
+                            
+                            <div id="nopeMsg" class="hidden mt-4 p-3 md:p-4 bg-red-50 text-red-700 border-l-4 border-red-500 rounded text-sm md:text-base"></div>
+                        </div>
+                    </div>
+
+                    <div id="realFormDiv" class="transition-all duration-700 ease-in-out">
+                        <div class="flex items-center gap-3 mb-4 md:mb-6 border-b border-slate-100 pb-4">
+                            <h2 class="text-xl md:text-3xl font-bold text-brand-blue">Secure Your 12-Month Cover</h2>
+                        </div>
+                        
+                        <p class="text-slate-600 mb-6 md:mb-8 text-sm md:text-lg">Please confirm your details below to activate your cover instantly.</p>
+
+                        <form class="max-w-lg mx-auto space-y-4 md:space-y-5">
+                            <h3 class="text-base md:text-lg font-bold text-brand-blue border-b border-slate-200 pb-2">Your Details</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                                <div>
+                                    <label for="fName" class="block text-sm font-medium text-slate-700">First Name</label>
+                                    <input type="text" id="fName" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                                </div>
+                                <div>
+                                    <label for="sName" class="block text-sm font-medium text-slate-700">Surname</label>
+                                    <input type="text" id="sName" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="idNum" class="block text-sm font-medium text-slate-700">ID Number</label>
+                                <input type="text" id="idNum" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base" placeholder="Your 13-digit SA ID">
+                                <p class="text-xs text-slate-500 mt-1">Entering your ID will automatically calculate your Date of Birth and Age.</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3 md:gap-4">
+                                <div>
+                                    <label for="birthDate" class="block text-sm font-medium text-slate-700">Date of Birth</label>
+                                    <input type="date" id="birthDate" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                                </div>
+                                <div>
+                                    <label for="howOld" class="block text-sm font-medium text-slate-700">Age</label>
+                                    <input type="text" id="howOld" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border bg-slate-100 text-slate-500 font-bold text-base" readonly>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="phoneNum" class="block text-sm font-medium text-slate-700">Contact Number</label>
+                                <input type="tel" id="phoneNum" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                            </div>
+
+                            <div>
+                                <label for="otherPhone" class="block text-sm font-medium text-slate-700">Alternative Contact Number <span class="text-xs font-normal text-slate-500">(Optional)</span></label>
+                                <input type="tel" id="otherPhone" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                            </div>
+
+                            <div>
+                                <label for="mailAddr" class="block text-sm font-medium text-slate-700">Email Address <span class="text-xs font-normal text-slate-500">(Optional)</span></label>
+                                <input type="email" id="mailAddr" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                            </div>
+                            <div>
+                                <label for="moneyMaker" class="block text-sm font-medium text-slate-700">Estimated Monthly Income</label>
+                                <select id="moneyMaker" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
+                                    <option value="">Please select</option>
+                                    <option value="<10k">R2,500 - R9,999</option>
+                                    <option value="10k-19k">R10,000 - R19,999</option>
+                                    <option value="20k-29k">R20,000 - R29,999</option>
+                                    <option value="30k+">R30,000+</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-2">Are you a South African citizen?</label>
+                                <div class="flex gap-4 md:gap-6">
+                                    <label class="flex items-center p-3 border border-slate-300 rounded-lg w-full cursor-pointer hover:bg-slate-50 active:bg-slate-100">
+                                        <input type="radio" name="app-citizen" id="citizenYesApp" value="yes" class="h-5 w-5 text-brand-action border-slate-300 focus:ring-brand-action" checked>
+                                        <span class="ml-2 text-sm font-medium text-slate-700">Yes</span>
+                                    </label>
+                                    <label class="flex items-center p-3 border border-slate-300 rounded-lg w-full cursor-pointer hover:bg-slate-50 active:bg-slate-100">
+                                        <input type="radio" name="app-citizen" id="citizenNoApp" value="no" class="h-5 w-5 text-brand-action border-slate-300 focus:ring-brand-action">
+                                        <span class="ml-2 text-sm font-medium text-slate-700">No</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start pt-4 bg-slate-50 p-3 md:p-4 rounded-lg">
+                                <input id="agreed" name="terms" type="checkbox" class="h-5 w-5 text-brand-action border-slate-300 rounded mt-1">
+                                <label for="agreed" class="ml-3 block text-sm text-slate-700">
+                                    I understand this is a 12-month cover at no cost to me and I accept the <a href="docs/2024.pdf" target="_blank" class="text-brand-action hover:underline font-bold">Terms & Conditions</a>.
+                                </label>
+                            </div>
+
+                            <div class="text-center pt-4 md:pt-6">
+                               <button type="button" onclick="validateFinalForm()" class="btn-grow w-full md:w-auto bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 md:py-4 px-10 rounded-lg shadow-lg text-lg transition duration-300 active:scale-95">
+                                    Activate My Cover Now
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="yaySection" class="hidden animate-fade-in">
+            <div class="bg-white-card rounded-xl shadow-xl overflow-hidden">
+                
+                <div class="h-64 md:h-80 w-full relative">
+                    <img src="images/4confirmPage.avif" 
+                         alt="Happy Family Celebrating Cover" 
+                         class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white"></div>
+                </div>
+
+                <div class="px-4 md:px-10 pb-12 md:pb-16 -mt-12 relative z-10 text-center">
+                    <div class="flex items-center justify-center h-20 w-20 md:h-24 md:w-24 rounded-full bg-green-100 text-green-600 mx-auto mb-4 md:mb-6 shadow-lg ring-4 ring-white">
+                        <svg class="h-10 w-10 md:h-12 md:w-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-brand-blue mb-3 md:mb-4">Congratulations!</h2>
+                    <p class="text-base md:text-xl text-slate-600 mb-6 md:mb-8 max-w-2xl mx-auto">Your R25,000 12-Month Accidental Death Cover is active. A confirmation email and policy documents will be sent to you shortly.</p>
+                    
+                    <div class="border-t border-slate-200 my-6 md:my-8"></div>
+
+                    <div class="bg-blue-50 border border-blue-100 rounded-xl p-4 md:p-8 max-w-3xl mx-auto shadow-sm">
+                        <h3 class="text-lg md:text-2xl font-bold text-brand-blue mb-2">Share the Peace of Mind</h3>
+                        <p class="text-slate-600 mb-4 md:mb-6 text-sm md:text-base">Do you have a loved one who needs this cover? Refer them now so they can get covered too.</p>
+                        
+                        <div id="referralBtnArea">
+                            <button onclick="toggleReferral()" class="btn-grow w-full md:w-auto bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 px-8 rounded-full shadow-md transition active:scale-95">
+                                Yes, Refer a Loved One
+                            </button>
+                        </div>
+
+                        <form id="referralForm" class="hidden space-y-3 md:space-y-4 mt-4 md:mt-6 text-left max-w-md mx-auto" onsubmit="sendReferral(event)">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Friend's Name & Surname</label>
+                                <input type="text" id="friendName" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border bg-white text-base">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Friend's Contact Number</label>
+                                <input type="tel" id="friendContact" required class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border bg-white text-base" placeholder="082 123 4567">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700">Friend's Email Address <span class="text-slate-400 font-normal">(Optional)</span></label>
+                                <input type="email" id="friendEmail" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border bg-white text-base" placeholder="friend@example.com">
+                            </div>
+
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-md shadow transition active:scale-95">
+                                Send Referral
+                            </button>
+                        </form>
+
+                        <div id="referralDone" class="hidden mt-4 md:mt-6 bg-green-100 text-green-800 p-3 md:p-4 rounded-lg text-sm md:text-base">
+                            <strong>Thank You!</strong> We will reach out to your loved one shortly.
+                        </div>
+                    </div>
+
+                    
+                    <div class="mt-8 md:mt-10 flex flex-col items-center gap-3 md:gap-4">
+                        <button onclick="openSummary()" class="text-brand-action hover:underline font-bold text-base md:text-lg">
+                            View My Policy Information
+                        </button>
+                        
+                        <button onclick="switchScreens('landingPage')" class="text-slate-500 hover:text-brand-action font-medium transition text-sm md:text-base">&larr; Back to Home</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <section class="bg-slate-50 border-t border-slate-200 mt-6 md:mt-8 py-6 md:py-8">
+        <div class="max-w-5xl mx-auto px-4 md:px-6 text-center">
+            <div class="inline-flex flex-col items-center justify-center gap-2">
+                <p class="text-xs md:text-sm text-slate-500 font-medium uppercase tracking-wider">Trusted by South Africans</p>
+                
+                <a href="https://www.hellopeter.com/alllife" target="_blank" class="flex flex-wrap justify-center items-center gap-3 bg-white px-4 md:px-6 py-2 md:py-3 rounded-full shadow-sm border border-slate-100 hover:shadow-md hover:bg-slate-50 transition-all cursor-pointer no-underline scale-75 md:scale-100">
+                    <div class="flex items-center gap-1">
+                        <span class="font-extrabold text-slate-800 text-lg md:text-xl tracking-tight">hello<span class="text-[#00d084]">peter</span></span>
+                    </div>
+                    <div class="hidden sm:block h-6 w-px bg-slate-200 mx-2"></div>
+                    <div class="flex text-yellow-400">
+                        <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="w-4 h-4 md:w-5 md:h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <span class="font-bold text-slate-700 ml-1 text-sm md:text-base">4.84/5</span>
+                </a>
+                <p class="text-[10px] md:text-xs text-slate-400 mt-1">Based on 4,828+ reviews</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-blue text-white py-6 md:py-10 border-t border-blue-900 mb-0">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 text-sm text-blue-200">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start mb-6 md:mb-8 gap-4 md:gap-8">
+               <div class="max-w-sm text-center md:text-left">
+                   
+                
+                   <img src="images/alllife-light-logo-new.png" alt="AllLife" class="h-8 md:h-12 mb-3 md:mb-4 w-auto mx-auto md:mx-0" onerror="this.src='https://placehold.co/120x50/0d2c54/white?text=AllLife'">
+                   
+                   <p class="text-xs md:text-sm">Pioneering life insurance for people living with chronic conditions.</p>
+               </div>
+
+               <div class="flex flex-col items-center md:items-end">
+                   <span class="text-[10px] md:text-xs text-blue-300 mb-2 uppercase tracking-widest">Underwritten By</span>
+                   
+                   <img src="images/omart.png" alt="Old Mutual Alternative Risk Transfer" class="h-8 md:h-12 w-auto rounded p-1.5 md:p-2 shadow-sm" onerror="this.src='https://placehold.co/120x50?text=OMART'">
+               </div>
+            </div>
+
+            <div class="border-t border-blue-800 pt-4 md:pt-8 text-[10px] md:text-xs leading-relaxed text-center md:text-left">
+                <p class="mb-2">AllLife (Pty) Ltd is an Authorised Financial Services Provider (FSP 4946).</p>
+                <p>Underwritten by Old Mutual Alternative Risk Transfer Limited (OMART), a Licensed Life Insurer and Authorised Financial Services Provider (FSP 242).</p>
+                <p class="mt-3 md:mt-4">&copy; 2025 AllLife. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+  
+    <div id="mobileStickyCTA" class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-40 transition-transform duration-300">
+        <button onclick="switchScreens('checkingPage')" class="w-full bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform">
+            Check if I Qualify
+        </button>
+    </div>
+
+    <div id="popupContainer" class="fixed bottom-20 left-4 md:bottom-6 md:left-6 z-40 flex flex-col gap-2 pointer-events-none"></div>
+
+    <div id="summaryModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-4 md:p-6 border-b border-slate-100 flex justify-between items-center">
+                <h3 class="text-lg md:text-xl font-bold text-brand-blue">Application Details</h3>
+                <button onclick="closeSummary()" class="text-slate-400 hover:text-slate-600">
+                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="summaryText" class="p-4 md:p-6 space-y-4">
+                </div>
+            <div class="p-4 md:p-6 bg-slate-50 rounded-b-xl text-center">
+                <button onclick="closeSummary()" class="bg-brand-blue text-white font-bold py-2 px-6 rounded-lg hover:bg-opacity-90">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="funeralModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
+        <div class="bg-white rounded-xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto relative">
+            
+            <div class="sticky top-0 bg-white p-4 border-b border-slate-100 flex justify-between items-center z-10">
+                <div class="flex items-center gap-2">
+                    <div class="bg-blue-100 p-2 rounded-lg text-brand-blue">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold text-brand-blue">Funeral Cost Estimator</h3>
+                </div>
+                <button onclick="toggleFuneralModal()" class="text-slate-400 hover:text-slate-600 bg-slate-100 p-2 rounded-full">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-4 md:p-6 space-y-6">
+    
+    <div class="rounded-xl overflow-hidden shadow-md h-32 md:h-48 relative">
+        <img src="images/funeral4.jpg" 
+             alt="Funeral Service" 
+             class="w-full h-full object-cover"
+             onerror="this.src='https://placehold.co/600x300/1e293b/white?text=Funeral+Service'">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end">
+            <p class="text-white font-medium p-3 text-sm md:text-base">Plan for a dignified farewell.</p>
+        </div>
+    </div>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 text-sm text-blue-800">
+                    Funerals in South Africa are expensive. Adjust the sliders below to see an estimated cost breakdown.
+                </div>
+                <div>
+                    <label class="flex justify-between text-sm font-bold text-slate-700 mb-2">
+                        <span>Number of Guests</span>
+                        <span id="guestCountDisplay" class="text-brand-action">50</span>
+                    </label>
+                    <input type="range" id="estGuests" min="0" max="200" value="50" step="10" oninput="updateFuneralEstimate()">
+                    <div class="flex justify-between text-xs text-slate-400 mt-1">
+                        <span>0</span>
+                        <span>100</span>
+                        <span>200+</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Catering (Per Head)</label>
+                        <select id="estCatering" class="w-full rounded-lg border-slate-300 shadow-sm p-2.5 border text-sm" onchange="updateFuneralEstimate()">
+                            <option value="50">Basic Snack (R50)</option>
+                            <option value="120" selected>Standard Meal (R120)</option>
+                            <option value="250">Premium Buffet (R250)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Casket / Coffin</label>
+                        <select id="estCasket" class="w-full rounded-lg border-slate-300 shadow-sm p-2.5 border text-sm" onchange="updateFuneralEstimate()">
+                            <option value="3000">Simple Pine (R3,000)</option>
+                            <option value="8000" selected>Standard (R8,000)</option>
+                            <option value="25000">Premium Dome (R25,000)</option>
+                            <option value="50000">Luxury (R50,000+)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold text-slate-700 mb-2">Extras Required</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="flex items-center space-x-2 bg-slate-50 p-2 rounded border border-slate-100 cursor-pointer">
+                            <input type="checkbox" class="est-extra text-brand-action rounded" value="5000" onchange="updateFuneralEstimate()" checked>
+                            <span class="text-sm text-slate-700">Tombstone (R5k)</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-slate-50 p-2 rounded border border-slate-100 cursor-pointer">
+                            <input type="checkbox" class="est-extra text-brand-action rounded" value="3000" onchange="updateFuneralEstimate()" checked>
+                            <span class="text-sm text-slate-700">Transport (R3k)</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-slate-50 p-2 rounded border border-slate-100 cursor-pointer">
+                            <input type="checkbox" class="est-extra text-brand-action rounded" value="2000" onchange="updateFuneralEstimate()">
+                            <span class="text-sm text-slate-700">Venue Hire (R2k)</span>
+                        </label>
+                        <label class="flex items-center space-x-2 bg-slate-50 p-2 rounded border border-slate-100 cursor-pointer">
+                            <input type="checkbox" class="est-extra text-brand-action rounded" value="4000" onchange="updateFuneralEstimate()">
+                            <span class="text-sm text-slate-700">Videography (R4k)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="bg-slate-900 rounded-xl p-6 text-center text-white relative overflow-hidden">
+                    <div class="absolute inset-0 bg-brand-action opacity-10"></div>
+                    <p class="text-slate-300 text-sm mb-1 uppercase tracking-wider relative z-10">Estimated Total Cost</p>
+                    <h2 class="text-4xl font-black relative z-10">R <span id="estTotalDisplay">0</span></h2>
+                    <p class="text-xs text-slate-400 mt-2 relative z-10">*Includes estimated admin & undertaker fees (R4,000)</p>
+                </div>
+
+                <div class="text-center">
+                    <p class="text-sm text-slate-600 mb-3">Don't leave your family with this burden.</p>
+                    <button onclick="toggleFuneralModal(); switchScreens('checkingPage')" class="w-full bg-brand-action hover:bg-brand-action-dark text-white font-bold py-3 rounded-lg shadow-lg transition duration-300 active:scale-95">
+                        Get Covered at No Cost To You
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const allSections = document.querySelectorAll('main > section');
+        const alertBox = document.getElementById('angryRedBox');
+        
+        let tempUserData = { contact: '', salary: '', email: '', altContact: '', age: '', citizen: '' };
+
+        function screamAtUser(msg) {
+            alertBox.textContent = msg;
+            alertBox.classList.remove('hidden');
+            setTimeout(() => { alertBox.classList.add('hidden'); }, 3000);
+        }
+
+        function switchScreens(screenId) {
+    allSections.forEach(s => s.classList.add('hidden'));
+    
+    const target = document.getElementById(screenId);
+    if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    const stickyCTA = document.getElementById('mobileStickyCTA');
+    if (stickyCTA) {
+        if (screenId === 'landingPage') {
+            stickyCTA.classList.remove('translate-y-full');
+        } else {
+            stickyCTA.classList.add('translate-y-full');
+        }
+    }
+
+    if (screenId === 'checkingPage') {
+        const inputsToHighlight = [
+            document.getElementById('ageInput'),
+            document.getElementById('contactInput'),
+            document.getElementById('salaryInput')
+        ];
+
+        inputsToHighlight.forEach(el => {
+            if (el && !el.value) {
+                highlightField(el);
+            }
+        });
+
+        const citizenGroup = document.querySelector('input[name="citizen"]:checked');
+        if (!citizenGroup) {
+            const citizenContainer = document.getElementById('citizenYes').closest('.flex');
+            
+            if (citizenContainer) {
+                citizenContainer.classList.add('ring-2', 'ring-yellow-400', 'bg-yellow-50', 'rounded-lg');
+                const radios = document.querySelectorAll('input[name="citizen"]');
+                radios.forEach(r => {
+                    r.addEventListener('change', () => {
+                        citizenContainer.classList.remove('ring-2', 'ring-yellow-400', 'bg-yellow-50');
+                    }, { once: true });
+                });
+            }
+        }
+    }
+}
+
+
+        const btnOne = document.getElementById('mainStartBtn');
+        if (btnOne) {
+            btnOne.addEventListener('click', () => {
+                switchScreens('checkingPage');
+            });
+        }
+        
+        const btnTwo = document.getElementById('bottomStartBtn');
+        if (btnTwo) {
+            btnTwo.addEventListener('click', () => {
+                switchScreens('checkingPage');
+            });
+        }
+
+        function highlightField(el) {
+        if (!el) return;
+        el.classList.add('input-highlight');
+        el.addEventListener('input', function() {
+            this.classList.remove('input-highlight');
+        }, { once: true });
+        
+        el.addEventListener('change', function() {
+            this.classList.remove('input-highlight');
+        }, { once: true });
+        }
+
+       const btnCheck = document.getElementById('checkCoverBtn');
+        if (btnCheck) {
+            btnCheck.addEventListener('click', () => {
+                const ageInput = document.getElementById('ageInput');
+                const contactInput = document.getElementById('contactInput');
+                const salaryInput = document.getElementById('salaryInput');
+                
+                const citizenGroup = document.querySelector('input[name="citizen"]:checked');
+                const citizen = citizenGroup ? citizenGroup.value : null;
+                
+                const fieldsToCheck = [ageInput, contactInput, salaryInput];
+                let hasEmpty = false;
+
+                fieldsToCheck.forEach(inp => {
+                    inp.classList.remove('input-highlight');
+                    
+                    if (!inp.value) {
+                        highlightField(inp); 
+                        hasEmpty = true;
+                    }
+                });
+
+                if (hasEmpty || !citizen) {
+                    screamAtUser("Please fill in all highlighted fields.");
+                    return;
+                }
+
+                const contact = contactInput.value;
+                const cleanNumber = contact.replace(/\D/g, ''); 
+
+                if (cleanNumber.length !== 10) {
+                    screamAtUser("Please enter a valid 10-digit contact number (e.g. 0821234567).");
+                    highlightField(contactInput);
+                    return; 
+                }
+            
+                tempUserData = { 
+                    contact: contact, 
+                    salary: salaryInput.value, 
+                    email: document.getElementById('emailInput').value, 
+                    altContact: document.getElementById('altContactInput').value, 
+                    age: parseInt(ageInput.value), 
+                    citizen: citizen 
+                };
+                
+                const age = parseInt(ageInput.value);
+                const salary = salaryInput.value;
+                let fails = [];
+                
+                if (age < 18 || age > 75) fails.push("you are not within the 18-75 age range");
+                if (citizen === 'no') fails.push("you are not a South African citizen");
+                if (salary === '<10k') fails.push("your monthly salary is below the R10,000 minimum requirement");
+
+                let cssClass = '';
+                let txt = '';
+                let btnHtml = '';
+
+                if (fails.length > 0) {
+                    cssClass = 'rotate-red'; 
+                    let reason = "Unfortunately, you don't qualify for this specific offer because " + fails.join(' and ') + ".";
+                    
+                    txt = `
+                        <h3 class="text-2xl md:text-3xl font-bold text-red-600 mb-3">Application Requires Review</h3>
+                        <p class="text-slate-600 text-base md:text-lg">${reason}</p>
+                        <p class="text-slate-600 text-base md:text-lg mt-2">You can explore other comprehensive cover options available on our AllLife website using the button below.</p>
+                    `;
+                
+                    btnHtml = `
+                        <a href="https://alllife.co.za/" class="btn-grow button-link w-full md:w-auto bg-slate-500 hover:bg-slate-600 shadow-lg active:scale-95">Explore Other Covers</a>
+                    `;
+                } else { 
+                    cssClass = 'rotate-green';
+                
+                    txt = `
+                        <h3 class="text-2xl md:text-3xl font-bold text-green-600 mb-3">Great news!</h3>
+                        <div class="bg-green-50 border border-green-200 rounded-xl p-4 md:p-5 mb-6 max-w-xs mx-auto shadow-inner">
+                            <div class="flex justify-between items-center mb-2 opacity-70">
+                                <span class="text-slate-600 font-semibold text-sm uppercase tracking-wider">Standard Price</span>
+                                <span class="text-red-500 font-bold line-through text-lg">R150/pm</span>
+                            </div>
+                            <div class="flex justify-between items-center border-t border-green-200 pt-2">
+                                <span class="text-brand-blue font-bold text-lg">Your Price</span>
+                                <span class="text-green-600 font-black text-3xl md:text-4xl">R0.00</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-base md:text-lg">You pre-qualify for your R25,000 12-Month Accidental DeathCover, at no cost you. What would you like to do next?</p>
+                    `;
+                
+                    btnHtml = `
+                        <button onclick="goToAppPart()" class="btn-grow button-link w-full md:w-auto bg-brand-action hover:bg-brand-action-dark shadow-lg active:scale-95">Activate My Cover</button>
+                    `;
+                }
+                
+                const resArea = document.getElementById('resultsArea');
+                const dial = document.getElementById('spinnyNeedle');
+                const words = document.getElementById('resultWords');
+                const btns = document.getElementById('resultButtons');
+
+                dial.className = 'cover-meter-needle'; 
+                words.innerHTML = ''; 
+                btns.innerHTML = ''; 
+
+                resArea.classList.remove('hidden');
+                resArea.scrollIntoView({ behavior: 'smooth' });
+
+                setTimeout(() => {
+                    dial.classList.add(cssClass);
+                    setTimeout(() => {
+                        words.innerHTML = txt;
+                        btns.innerHTML = btnHtml;
+                    }, 1500); 
+                }, 100);
+            });
+        }
+        
+        function goToAppPart() {
+            const isQualified = tempUserData.salary && tempUserData.citizen;
+            const bouncer = document.getElementById('bouncerDiv');
+            const formContainer = document.getElementById('realFormDiv');
+            const backBtn = document.getElementById('goBackBtn');
+
+            if (!isQualified) {
+                if (backBtn) {
+                    backBtn.innerHTML = '&larr; Back to Home';
+                    backBtn.onclick = function() { switchScreens('landingPage'); };
+                }
+
+                bouncer.classList.remove('hidden');
+                
+                const inputs = document.querySelectorAll('#bouncerDiv input, #bouncerDiv select');
+                inputs.forEach(inp => {
+                    inp.classList.remove('input-highlight');
+                    
+                    if (!inp.value) {
+                        inp.classList.add('input-highlight');
+                        inp.addEventListener('input', function() {
+                            this.classList.remove('input-highlight');
+                        }, { once: true });
+                    }
+                });
+                
+                formContainer.classList.remove('hidden');
+                formContainer.classList.add('blur-sm', 'opacity-40', 'pointer-events-none', 'select-none', 'grayscale');
+            } else {
+               // === SUCCESS: USER IS QUALIFIED ===
+                
+                // 1. API INTEGRATION POINT: PARTIAL LEAD CAPTURE (Step 2 Data)
+                // We would like to capture this NOW, just in case they don't finish the final form.
+                
+                const partialData = {
+                    phone: tempUserData.contact,
+                    salaryBracket: tempUserData.salary,
+                    age: tempUserData.age,
+                    citizen: tempUserData.citizen,
+                    email: tempUserData.email,         // Might be empty, optional
+                    altPhone: tempUserData.altContact, // Might be empty, optional
+                    stage: 'DropOff_After_Qualification' 
+                };
+
+                console.log("Sending Partial Lead to API:", partialData);
+
+                /* // MOCK API CALL:
+                fetch('https://api.alllife.co.za/v1/leads/partial', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(partialData)
+                });
+                */
+
+                if (backBtn) {
+                    backBtn.innerHTML = '&larr; Back to results';
+                    backBtn.onclick = function() { switchScreens('checkingPage'); };
+                }
+
+                bouncer.classList.add('hidden');
+                
+                formContainer.classList.remove('hidden');
+                formContainer.classList.remove('blur-sm', 'opacity-40', 'pointer-events-none', 'select-none', 'grayscale');
+                
+                // Prefill logic (Keep existing prefill code here)
+                document.getElementById('phoneNum').value = tempUserData.contact || '';
+                document.getElementById('moneyMaker').value = tempUserData.salary || '';
+                document.getElementById('otherPhone').value = tempUserData.altContact || '';
+                document.getElementById('mailAddr').value = tempUserData.email || '';
+
+                if (tempUserData.age) document.getElementById('howOld').value = tempUserData.age;
+                if (tempUserData.citizen === 'yes') document.getElementById('citizenYesApp').checked = true;
+                else if (tempUserData.citizen === 'no') document.getElementById('citizenNoApp').checked = true;
+
+                const inputs = document.querySelectorAll('#appPage form input, #appPage form select');
+                inputs.forEach(inp => {
+                    inp.classList.remove('input-highlight');
+                    if (inp.type !== 'hidden' && inp.type !== 'checkbox' && inp.type !== 'radio' && !inp.value) {
+                        inp.classList.add('input-highlight');
+                        inp.addEventListener('input', function() {
+                            this.classList.remove('input-highlight');
+                        }, { once: true });
+                    }
+                });
+            }
+            switchScreens('appPage');
+        }
+
+       function checkEligibility() {
+            const ageEl = document.getElementById('gateAge');
+            const salaryEl = document.getElementById('gateSalary');
+            const citizenEl = document.getElementById('gateCitizen');
+            const msgBox = document.getElementById('nopeMsg');
+
+            msgBox.classList.add('hidden');
+            [ageEl, salaryEl, citizenEl].forEach(el => el.classList.remove('input-highlight'));
+
+            let missing = false;
+
+            if (!ageEl.value) { highlightField(ageEl); missing = true; }
+            if (!salaryEl.value) { highlightField(salaryEl); missing = true; }
+            if (!citizenEl.value) { highlightField(citizenEl); missing = true; }
+
+            if (missing) {
+                msgBox.textContent = "Please fill in the highlighted fields.";
+                msgBox.classList.remove('hidden');
+                return;
+            }
+
+            // If we get here, fields are filled.
+            const age = parseInt(ageEl.value);
+            const salary = salaryEl.value;
+            const citizen = citizenEl.value;
+
+            let fails = [];
+            if (age < 18 || age > 75) fails.push("you are not within the 18-75 age range");
+            if (citizen === 'no') fails.push("you are not a South African citizen");
+            if (salary === '<10k') fails.push("your monthly salary is below the R10,000 minimum requirement");
+
+            const gateDiv = document.getElementById('bouncerDiv');
+
+            if (fails.length > 0) {
+                gateDiv.innerHTML = `
+                    <div class="text-center py-6">
+                        <div class="flex justify-center mb-6 scale-75 origin-top"> 
+                            <div class="cover-meter-base"><div class="cover-meter-inner"></div><div id="miniSpinny" class="cover-meter-needle"></div></div>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-red-600 mt-[-30px] mb-2">Application Review Required</h3>
+                        <p class="text-slate-600 mb-6 text-sm md:text-base">Unfortunately, you don't qualify for this specific offer because ${fails.join(' and ')}.</p>
+                        <div class="flex flex-col gap-4 items-center">
+                            <a href="https://alllife.co.za/" class="btn-grow button-link bg-slate-500">Explore Other Covers</a>
+                            <button onclick="tryAgain(${age}, '${salary}', '${citizen}')" class="text-slate-400 underline text-sm">I made a mistake, let me check again</button>
+                        </div>
+                    </div>`;
+                 setTimeout(() => { document.getElementById('miniSpinny')?.classList.add('rotate-red'); }, 100);
+
+            } else {
+                gateDiv.innerHTML = `
+                    <div class="text-center py-6">
+                        <div class="flex justify-center mb-6 scale-75 origin-top"> 
+                            <div class="cover-meter-base">
+                                <div class="cover-meter-inner"></div>
+                                <div id="miniSpinnySuccess" class="cover-meter-needle"></div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-green-600 mt-[-30px] mb-2 animate-pulse">Unlocking Form...</h3>
+                        <p class="text-slate-600 mb-6 text-sm md:text-base">Great! You qualify. Preparing your application...</p>
+                    </div>`;
+                
+                setTimeout(() => { 
+                    document.getElementById('miniSpinnySuccess')?.classList.add('rotate-green'); 
+                }, 100);
+
+                setTimeout(() => {
+                    tempUserData.salary = salary;
+                    tempUserData.age = age;
+                    tempUserData.citizen = citizen;
+
+                    gateDiv.classList.add('hidden');
+                    const formDiv = document.getElementById('realFormDiv');
+                    formDiv.classList.remove('blur-sm', 'opacity-40', 'pointer-events-none', 'select-none', 'grayscale');
+                    formDiv.classList.add('animate-fade-in'); 
+
+                    document.getElementById('moneyMaker').value = salary;
+                    document.getElementById('howOld').value = age;
+                    if(citizen === 'yes') document.getElementById('citizenYesApp').checked = true;
+                    else document.getElementById('citizenNoApp').checked = true;
+
+                    const inputs = document.querySelectorAll('#appPage form input, #appPage form select');
+                    inputs.forEach(inp => {
+                        if (inp.type !== 'hidden' && inp.type !== 'checkbox' && inp.type !== 'radio' && !inp.value) {
+                             highlightField(inp);
+                        }
+                    });
+
+                    formDiv.scrollIntoView({ behavior: 'smooth' });
+                }, 2000);
+            }
+        }
+
+        function tryAgain(oldAge, oldSalary, oldCitizen) {
+            const gateDiv = document.getElementById('bouncerDiv');
+            gateDiv.innerHTML = `
+                <div class="bg-slate-50 border-2 border-slate-200 rounded-xl p-4 md:p-8 shadow-xl">
+                    <div class="flex items-center gap-2 md:gap-3 mb-4 md:mb-6">
+                        <div class="bg-brand-blue text-white rounded-full h-6 w-6 md:h-8 md:w-8 flex items-center justify-center font-bold text-xs md:text-sm">1</div>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-blue">Quick Eligibility Check</h3>
+                    </div>
+                    <p class="text-slate-600 mb-4 md:mb-6 text-sm md:text-base">Before we activate your cover, we just need to verify a few quick details.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-4 md:mb-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Age</label>
+                            <input type="number" id="gateAge" value="${oldAge}" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base" placeholder="e.g. 35">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Monthly Income</label>
+                            <select id="gateSalary" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base">
+                                <option value="">Please select</option>
+                                <option value="<10k" ${oldSalary === '<10k' ? 'selected' : ''}>R2,500 - R9,999</option>
+                                <option value="10k-19k" ${oldSalary === '10k-19k' ? 'selected' : ''}>R10,000 - R19,999</option>
+                                <option value="20k-29k" ${oldSalary === '20k-29k' ? 'selected' : ''}>R20,000 - R29,999</option>
+                                <option value="30k+" ${oldSalary === '30k+' ? 'selected' : ''}>R30,000+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">SA Citizen?</label>
+                            <select id="gateCitizen" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base">
+                                <option value="">Please select</option>
+                                <option value="yes" ${oldCitizen === 'yes' ? 'selected' : ''}>Yes</option>
+                                <option value="no" ${oldCitizen === 'no' ? 'selected' : ''}>No</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button onclick="checkEligibility()" class="w-full bg-brand-blue hover:bg-slate-800 text-white font-bold py-3 rounded-lg transition shadow-md active:scale-95">
+                        Show Cover I Qualify For
+                    </button>
+                    
+                    <div id="nopeMsg" class="hidden mt-4 p-3 md:p-4 bg-red-50 text-red-700 border-l-4 border-red-500 rounded text-sm md:text-base"></div>
+                </div>
+            `;
+        }
+
+        function figureOutId(val) {
+            const clean = val.replace(/\D/g, '');
+
+            if (clean.length < 6) {
+                 document.getElementById('birthDate').value = '';
+                 document.getElementById('howOld').value = '';
+                 return;
+            }
+
+            const yy = parseInt(clean.substring(0, 2));
+            const mm = parseInt(clean.substring(2, 4));
+            const dd = parseInt(clean.substring(4, 6));
+
+            if (mm < 1 || mm > 12 || dd < 1 || dd > 31) return;
+
+            const currTwo = parseInt(new Date().getFullYear().toString().substring(2, 4));
+            
+            let fullYr;
+            if (yy <= currTwo) {
+                fullYr = 2000 + yy;
+            } else {
+                fullYr = 1900 + yy;
+            }
+
+            const mmS = mm.toString().padStart(2, '0');
+            const ddS = dd.toString().padStart(2, '0');
+            const dobStr = `${fullYr}-${mmS}-${ddS}`;
+
+            const dInput = document.getElementById('birthDate');
+            dInput.value = dobStr;
+            dInput.classList.remove('bg-amber-50', 'border-amber-400', 'ring-2', 'ring-amber-100');
+
+            calcAge(dobStr);
+        }
+
+        function calcAge(dobVal) {
+            if (!dobVal) return;
+
+            const d = new Date(dobVal);
+            const t = new Date();
+            
+            let a = t.getFullYear() - d.getFullYear();
+            const m = t.getMonth() - d.getMonth();
+            
+            if (m < 0 || (m === 0 && t.getDate() < d.getDate())) {
+                a--;
+            }
+
+            const aInput = document.getElementById('howOld');
+            if (!isNaN(a)) {
+                aInput.value = a;
+                aInput.classList.remove('bg-amber-50', 'border-amber-400', 'ring-2', 'ring-amber-100');
+            } else {
+                aInput.value = '';
+            }
+        }
+
+        function toggleReferral() {
+            document.getElementById('referralBtnArea').classList.add('hidden');
+            document.getElementById('referralForm').classList.remove('hidden');
+        }
+
+        function sendReferral(e) {
+    e.preventDefault();
+    const nameInput = document.getElementById('friendName');
+    const contactInput = document.getElementById('friendContact');
+    
+    const n = nameInput.value;
+    const c = contactInput.value;
+
+    if (!n || !c) {
+        screamAtUser("Please fill in both the name and contact number.");
+        return;
+    }
+
+
+    const cleanNumber = c.replace(/\D/g, '');
+
+    if (cleanNumber.length !== 10) {
+        screamAtUser("Please enter a valid 10-digit contact number (e.g. 0821234567).");
+        
+        contactInput.classList.add('input-highlight');
+        contactInput.addEventListener('input', function() {
+            this.classList.remove('input-highlight');
+        }, { once: true });
+        
+        return;
+    }
+
+    // API INTEGRATION POINT: REFERRAL SUBMISSION
+    const referralData = {
+        referrerId: document.getElementById('idNum').value, // Link to the main user
+        friendName: n,
+        friendContact: c,
+        friendEmail: document.getElementById('friendEmail').value
+    };
+
+    console.log("Referral to send:", referralData);
+
+    /*
+    // TODO: IT to implement POST request here
+    fetch('https://api.alllife.co.za/v1/referrals', { ... })
+    */
+
+    document.getElementById('referralForm').classList.add('hidden');
+    document.getElementById('referralDone').classList.remove('hidden');
+}
+
+        function openSummary() {
+            const f = document.getElementById('fName').value || '-';
+            const s = document.getElementById('sName').value || '-';
+            const i = document.getElementById('idNum').value || '-';
+            const d = document.getElementById('birthDate').value || '-';
+            const a = document.getElementById('howOld').value || '-';
+            const c = document.getElementById('phoneNum').value || '-';
+            const ac = document.getElementById('otherPhone').value || '-';
+            const e = document.getElementById('mailAddr').value || '-';
+            const money = document.getElementById('moneyMaker').value || '-';
+            
+            let cz = '-';
+            if(document.getElementById('citizenYesApp').checked) cz = 'Yes';
+            else if(document.getElementById('citizenNoApp').checked) cz = 'No';
+
+            const html = `
+                <div class="grid grid-cols-2 gap-3 md:gap-4 text-sm">
+                    <div><span class="block text-slate-500 text-xs">Full Name</span><span class="font-medium text-slate-800">${f} ${s}</span></div>
+                    <div><span class="block text-slate-500 text-xs">ID Number</span><span class="font-medium text-slate-800">${i}</span></div>
+                    <div><span class="block text-slate-500 text-xs">Date of Birth</span><span class="font-medium text-slate-800">${d}</span></div>
+                    <div><span class="block text-slate-500 text-xs">Age</span><span class="font-medium text-slate-800">${a}</span></div>
+                    <div><span class="block text-slate-500 text-xs">Contact</span><span class="font-medium text-slate-800">${c}</span></div>
+                    <div><span class="block text-slate-500 text-xs">Alt Contact</span><span class="font-medium text-slate-800">${ac}</span></div>
+                    <div class="col-span-2"><span class="block text-slate-500 text-xs">Email</span><span class="font-medium text-slate-800">${e}</span></div>
+                    <div><span class="block text-slate-500 text-xs">Monthly Income</span><span class="font-medium text-slate-800">${money}</span></div>
+                    <div><span class="block text-slate-500 text-xs">SA Citizen</span><span class="font-medium text-slate-800">${cz}</span></div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-slate-100">
+                    <p class="text-xs text-green-600 font-bold flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        Status: Active
+                    </p>
+                </div>
+            `;
+
+            document.getElementById('summaryText').innerHTML = html;
+            document.getElementById('summaryModal').classList.remove('hidden');
+        }
+
+        function closeSummary() {
+            document.getElementById('summaryModal').classList.add('hidden');
+        }
+
+        function toggleFuneralModal() {
+            const modal = document.getElementById('funeralModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                updateFuneralEstimate();
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function updateFuneralEstimate() {
+            const guests = parseInt(document.getElementById('estGuests').value);
+            document.getElementById('guestCountDisplay').textContent = guests;
+
+            const cateringCost = parseInt(document.getElementById('estCatering').value);
+            const casketCost = parseInt(document.getElementById('estCasket').value);
+            
+            let extraCost = 0;
+            const checks = document.querySelectorAll('.est-extra:checked');
+            checks.forEach(c => {
+                extraCost += parseInt(c.value);
+            });
+
+            const baseFees = 4000;
+            
+            const total = baseFees + (guests * cateringCost) + casketCost + extraCost;
+
+            document.getElementById('estTotalDisplay').textContent = total.toLocaleString('en-ZA');
+        }
+
+        const quotes = [
+            "South Africa has one of the highest road accident rates globally, with <span class='font-black text-red-600'>over 12,000 fatalities</span> reported annually.",
+            "You don't have to be driving to be at risk—pedestrians account for <span class='font-black text-red-600'>nearly 40%</span> of all road accident fatalities.",
+            "The average funeral in SA costs <span class='font-black text-brand-action'>over R20,000 upfront</span>. Accidental Death cover pays out cash when families need it most.",
+            "The home is statistically the <span class='font-black text-brand-blue'>most common place for injuries</span>. Slips, falls and DIY accidents happen daily.",
+            "For people under the age of 45, accidental injury is the <span class='font-black text-red-600'>leading cause of unexpected death</span> worldwide.",
+            "<span class='font-black text-brand-action'>60% of families</span> face severe financial hardship within 12 months of losing a breadwinner to an accident.",
+            "Taxi and bus commuters face <span class='font-black text-red-600'>significantly higher daily risks</span>—accidents happen during the daily rush, not just on holidays."
+        ];
+        
+        const tick = document.getElementById('scrollingTextThing');
+        if (tick) {
+            tick.innerHTML = quotes.join(' &nbsp;&nbsp;&bull;&nbsp;&nbsp; ') + ' &nbsp;&nbsp;&bull;&nbsp;&nbsp; ' + quotes.join(' &nbsp;&nbsp;&bull;&nbsp;&nbsp; ');
+        }
+
+        const peeps = [
+            { name: "Junior", location: "Pretoria", action: "Qualified" },
+            { name: "Bradley", location: "Cape Town", action: "Activated Cover" },
+            { name: "Qhamile", location: "Durban", action: "Checking Status" },
+            { name: "Steph", location: "Sandton", action: "Activated & Sent Referral" },
+            { name: "Piet", location: "Bloemfontein", action: "Rated us 5 Star(HelloPeter)" }
+        ];
+
+        let peepIndex = 0; 
+
+        function runPopup() {
+            const container = document.getElementById('popupContainer');
+            if (!container) return;
+
+            const u = peeps[peepIndex];
+            
+            peepIndex = (peepIndex + 1) % peeps.length;
+            
+            const n = document.createElement('div');
+            n.className = "notification-toast bg-white border-l-4 border-brand-action text-brand-blue p-4 md:p-5 rounded-xl shadow-2xl flex items-center gap-3 md:gap-4 max-w-md transform transition-all duration-500";
+            n.innerHTML = `
+                <div class="h-10 w-10 md:h-12 md:w-12 rounded-full bg-blue-100 text-brand-action flex items-center justify-center font-bold text-xs md:text-sm">
+                    ${u.name.charAt(0)}
+                </div>
+                <div>
+                    <p class="text-sm md:text-base font-bold">${u.name} from ${u.location}</p>
+                    <p class="text-xs md:text-sm text-slate-500">Just ${u.action}</p>
+                </div>
+            `;
+
+            container.appendChild(n);
+            
+            setTimeout(() => {
+                n.classList.remove('notification-toast');
+                n.classList.add('notification-exit');
+                setTimeout(() => n.remove(), 500);
+            }, 7000);
+        }
+
+    
+        setTimeout(() => {
+            runPopup();
+            setInterval(runPopup, 8000); 
+        }, 2000);
+
+
+        const idInp = document.getElementById('idNum');
+        if (idInp) {
+            idInp.addEventListener('input', function(e) {
+                figureOutId(e.target.value);
+            });
+        }
+
+        const dobInp = document.getElementById('birthDate');
+        if (dobInp) {
+            dobInp.addEventListener('change', function(e) {
+                calcAge(e.target.value);
+            });
+        }
+
+        function validateSAID(idNumber) {
+            if (!idNumber || idNumber.length !== 13 || isNaN(idNumber)) return false;
+            
+            const mm = parseInt(idNumber.substring(2, 4));
+            const dd = parseInt(idNumber.substring(4, 6));
+            if (mm < 1 || mm > 12 || dd < 1 || dd > 31) return false;
+
+            let nTotal = 0;
+            for (let i = 0; i < 13; i++) {
+                const cDigit = idNumber.charAt(i);
+                let nDigit = parseInt(cDigit, 10);
+                if ((i % 2) !== 0) {
+                    nDigit = nDigit * 2;
+                    if (nDigit > 9) nDigit = nDigit - 9;
+                }
+                nTotal = nTotal + nDigit;
+            }
+            return (nTotal % 10) === 0;
+        }
+
+       function validateFinalForm() {
+            const submitBtn = document.querySelector('button[onclick="validateFinalForm()"]');
+            const originalBtnText = submitBtn.innerText;
+
+            const fields = [
+                { id: 'fName', type: 'text' },
+                { id: 'sName', type: 'text' },
+                { id: 'idNum', type: 'id' },
+                { id: 'birthDate', type: 'text' },
+                { id: 'phoneNum', type: 'phone' },
+                { id: 'moneyMaker', type: 'text' }
+            ];
+
+            let isValid = true;
+            let firstErrorField = null;
+            let specificErrorMsg = "";
+
+            fields.forEach(field => {
+                const el = document.getElementById(field.id);
+                if (el) {
+                    el.classList.remove('input-highlight');
+                    const val = el.value.trim();
+
+                    if (!val) {
+                        isValid = false;
+                        highlightField(el);
+                        if (!firstErrorField) firstErrorField = el;
+                    } 
+                    else if (field.type === 'id') {
+                        if (!validateSAID(val)) {
+                            isValid = false;
+                            highlightField(el);
+                            specificErrorMsg = "Invalid ID Number provided.";
+                            if (!firstErrorField) firstErrorField = el;
+                        }
+                    }
+                    else if (field.type === 'phone') {
+                        const cleanPhone = val.replace(/\D/g, '');
+                        if (cleanPhone.length !== 10) {
+                            isValid = false;
+                            highlightField(el);
+                            specificErrorMsg = "Phone number must be exactly 10 digits.";
+                            if (!firstErrorField) firstErrorField = el;
+                        }
+                    }
+                }
+            });
+
+            const terms = document.getElementById('agreed');
+            const termsLabel = terms.nextElementSibling;
+            if (termsLabel) termsLabel.classList.remove('text-red-600', 'font-bold');
+
+            if (!terms.checked) {
+                isValid = false;
+                if (termsLabel) termsLabel.classList.add('text-red-600', 'font-bold');
+                if (!specificErrorMsg) specificErrorMsg = "Please accept the Terms & Conditions.";
+            }
+
+            if (isValid) {
+                let qualFails = [];
+                
+                const ageVal = parseInt(document.getElementById('howOld').value);
+                if (ageVal < 18 || ageVal > 75) {
+                    qualFails.push("Age must be between 18 and 75");
+                    highlightField(document.getElementById('birthDate'));
+                }
+
+                const salaryVal = document.getElementById('moneyMaker').value;
+                if (salaryVal === '<10k') {
+                    qualFails.push("Income must be R10,000 or more");
+                    highlightField(document.getElementById('moneyMaker'));
+                }
+
+                const isCitizen = document.getElementById('citizenYesApp').checked;
+                if (!isCitizen) {
+                    qualFails.push("Must be a South African Citizen");
+                    const citizenContainer = document.getElementById('citizenYesApp').closest('.flex');
+                    if(citizenContainer) citizenContainer.classList.add('bg-red-50', 'border', 'border-red-500', 'rounded');
+                }
+
+                if (qualFails.length > 0) {
+                    isValid = false;
+                    specificErrorMsg = "Application Rejected: " + qualFails.join(', ');
+                }
+            }
+        
+            if (isValid) {
+        
+                submitBtn.innerText = "Processing...";
+                submitBtn.disabled = true; // Prevent double clicking
+                submitBtn.classList.add('opacity-75', 'cursor-wait');
+
+                // API INTEGRATION POINT: MAIN LEAD SUBMISSION
+                // TODO: Replace this timeout with the actual API Call
+                
+                // 1. Prepare the Data Payload
+                const leadData = {
+                    firstName: document.getElementById('fName').value,
+                    lastName: document.getElementById('sName').value,
+                    idNumber: document.getElementById('idNum').value,
+                    dob: document.getElementById('birthDate').value,
+                    phone: document.getElementById('phoneNum').value,
+                    altPhone: document.getElementById('otherPhone').value,
+                    email: document.getElementById('mailAddr').value,
+                    incomeBracket: document.getElementById('moneyMaker').value,
+                    isCitizen: document.querySelector('input[name="app-citizen"]:checked')?.value,
+                    termsAccepted: true,
+                    source: 'R25k_Free_Cover_Campaign'
+                };
+
+                console.log("Ready to send to API:", leadData);
+
+                /* // EXAMPLE API CALL (For IT Team Reference):
+                fetch('https://api.alllife.co.za/v1/leads/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(leadData)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        switchScreens('yaySection');
+                    } else {
+                        screamAtUser("System Error: Please try again later.");
+                    }
+                });
+                */
+
+                // TEMPORARY: Simulate success for demo purposes
+                setTimeout(() => {
+                    switchScreens('yaySection');
+                    submitBtn.innerText = originalBtnText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-75', 'cursor-wait');
+                }, 1500);
+
+            } else {
+                if (specificErrorMsg) {
+                    screamAtUser(specificErrorMsg);
+                } else {
+                    screamAtUser("Please correct the highlighted fields.");
+                }
+
+                if (firstErrorField) {
+                    firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    document.getElementById('realFormDiv').scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
