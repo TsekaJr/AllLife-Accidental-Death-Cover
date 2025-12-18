@@ -160,7 +160,7 @@
                                 </div>
                             </div>
                             <div>
-                                <h4 class="font-bold text-brand-blue text-sm md:text-lg mb-1">What is Accidental DeathCover?</h4>
+                                <h4 class="font-bold text-brand-blue text-sm md:text-lg mb-1">What is Accidental Death Cover?</h4>
                                 <p class="text-slate-600 text-xs md:text-sm leading-relaxed">This policy pays out for any accidental death. This includes things like car accidents, slips and falls, drowning, fire-related accidents or violence.</p>
                             </div>
                  </div>
@@ -310,8 +310,8 @@
                                 <label for="salaryInput" class="block text-sm font-bold text-slate-700 mb-1">How much do you earn per month?</label>
                                 <select id="salaryInput" name="salary" class="w-full rounded-lg border-slate-300 shadow-sm focus:border-brand-action focus:ring-brand-action p-3 md:p-3 border text-base" required>
                                     <option value="">Please select</option>
-                                    <option value="<10k">R2,500 - R9,999</option>
-                                    <option value="10k-19k">R10,000 - R19,999</option>
+                                    <option value="<10k">R2,500 - R7,499</option>
+                                    <option value="10k-19k">R7,500 - R19,999</option>
                                     <option value="20k-29k">R20,000 - R29,999</option>
                                     <option value="30k+">R30,000+</option>
                                 </select>
@@ -389,11 +389,11 @@
                                 <div>
                                     <label class="block text-sm font-bold text-slate-700 mb-1">Monthly Income</label>
                                     <select id="gateSalary" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base">
-                                        <option value="">Please select</option>
-                                        <option value="<10k">R2,500 - R9,999</option>
-                                        <option value="10k-19k">R10,000 - R19,999</option>
-                                        <option value="20k-29k">R20,000 - R29,999</option>
-                                        <option value="30k+">R30,000+</option>
+                                            <option value="">Please select</option>
+                                            <option value="<10k">R2,500 - R7,499</option>
+                                            <option value="10k-19k">R7,500 - R19,999</option>
+                                            <option value="20k-29k">R20,000 - R29,999</option>
+                                            <option value="30k+">R30,000+</option>
                                     </select>
                                 </div>
                                 <div>
@@ -461,15 +461,15 @@
                             </div>
 
                             <div>
-                                <label for="mailAddr" class="block text-sm font-medium text-slate-700">Email Address <span class="text-xs font-normal text-slate-500">(Optional)</span></label>
+                                <label for="mailAddr" class="block text-sm font-medium text-slate-700">Email Address</label>
                                 <input type="email" id="mailAddr" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
                             </div>
                             <div>
                                 <label for="moneyMaker" class="block text-sm font-medium text-slate-700">Estimated Monthly Income</label>
                                 <select id="moneyMaker" class="mt-1 block w-full rounded-md border-slate-300 shadow-sm p-3 border text-base">
-                                    <option value="">Please select</option>
-                                    <option value="<10k">R2,500 - R9,999</option>
-                                    <option value="10k-19k">R10,000 - R19,999</option>
+                                     <option value="">Please select</option>
+                                    <option value="<10k">R2,500 - R7,499</option>
+                                    <option value="10k-19k">R7,500 - R19,999</option>
                                     <option value="20k-29k">R20,000 - R29,999</option>
                                     <option value="30k+">R30,000+</option>
                                 </select>
@@ -764,24 +764,24 @@
         }
 
         function switchScreens(screenId) {
-    allSections.forEach(s => s.classList.add('hidden'));
-    
-    const target = document.getElementById(screenId);
-    if (target) {
-        target.classList.remove('hidden');
-        window.scrollTo(0, 0);
-    }
-
-    const stickyCTA = document.getElementById('mobileStickyCTA');
-    if (stickyCTA) {
-        if (screenId === 'landingPage') {
-            stickyCTA.classList.remove('translate-y-full');
-        } else {
-            stickyCTA.classList.add('translate-y-full');
+        allSections.forEach(s => s.classList.add('hidden'));
+        
+        const target = document.getElementById(screenId);
+        if (target) {
+            target.classList.remove('hidden');
+            window.scrollTo(0, 0);
         }
-    }
 
-    if (screenId === 'checkingPage') {
+        const stickyCTA = document.getElementById('mobileStickyCTA');
+        if (stickyCTA) {
+            if (screenId === 'landingPage') {
+                stickyCTA.classList.remove('translate-y-full');
+            } else {
+                stickyCTA.classList.add('translate-y-full');
+            }
+        }
+
+        if (screenId === 'checkingPage') {
         const inputsToHighlight = [
             document.getElementById('ageInput'),
             document.getElementById('contactInput'),
@@ -805,11 +805,11 @@
                     r.addEventListener('change', () => {
                         citizenContainer.classList.remove('ring-2', 'ring-yellow-400', 'bg-yellow-50');
                     }, { once: true });
-                });
+                        });
+                    }
+                }
             }
         }
-    }
-}
 
 
         const btnOne = document.getElementById('mainStartBtn');
@@ -873,6 +873,16 @@
                     highlightField(contactInput);
                     return; 
                 }
+
+                const altInput = document.getElementById('altContactInput');
+                if (altInput && altInput.value.trim() !== '') {
+                    const cleanAlt = altInput.value.replace(/\D/g, '');
+                    if (cleanAlt.length !== 10) {
+                        screamAtUser("Alternative contact number must be exactly 10 digits.");
+                        highlightField(altInput);
+                        return;
+                    }
+                }
             
                 tempUserData = { 
                     contact: contact, 
@@ -882,14 +892,15 @@
                     age: parseInt(ageInput.value), 
                     citizen: citizen 
                 };
-                
+
                 const age = parseInt(ageInput.value);
                 const salary = salaryInput.value;
+                
                 let fails = [];
                 
-                if (age < 18 || age > 75) fails.push("you are not within the 18-75 age range");
-                if (citizen === 'no') fails.push("you are not a South African citizen");
-                if (salary === '<10k') fails.push("your monthly salary is below the R10,000 minimum requirement");
+                if (age < 18 || age > 75) fails.push("age");
+                if (citizen === 'no') fails.push("citizenship");
+                if (salary === '<10k') fails.push("salary");
 
                 let cssClass = '';
                 let txt = '';
@@ -897,17 +908,34 @@
 
                 if (fails.length > 0) {
                     cssClass = 'rotate-red'; 
-                    let reason = "Unfortunately, you don't qualify for this specific offer because " + fails.join(' and ') + ".";
+                    const isHardFail = fails.includes("age") || fails.includes("citizenship");
                     
-                    txt = `
-                        <h3 class="text-2xl md:text-3xl font-bold text-red-600 mb-3">Application Requires Review</h3>
-                        <p class="text-slate-600 text-base md:text-lg">${reason}</p>
-                        <p class="text-slate-600 text-base md:text-lg mt-2">You can explore other comprehensive cover options available on our AllLife website using the button below.</p>
-                    `;
-                
-                    btnHtml = `
-                        <a href="https://alllife.co.za/" class="btn-grow button-link w-full md:w-auto bg-slate-500 hover:bg-slate-600 shadow-lg active:scale-95">Explore Other Covers</a>
-                    `;
+                    if (isHardFail) {
+                        txt = `
+                            <h3 class="text-2xl md:text-3xl font-bold text-slate-700 mb-3">Application Unsuccessful</h3>
+                            <div class="bg-red-50 border border-red-100 rounded-lg p-4 mb-2 max-w-md mx-auto">
+                                <p class="text-red-800 text-sm md:text-base font-medium">
+                                    Unfortunately, we cannot offer you cover at this time.
+                                </p>
+                                <p class="text-red-700 text-xs md:text-sm mt-2">
+                                    Our underwriting criteria strictly require policyholders to be South African citizens between the ages of 18 and 75.
+                                </p>
+                            </div>
+                        `;
+                        btnHtml = `<p class="text-slate-400 text-xs mt-4">Please check your details above if you made a mistake.</p>`;
+                        
+                    } else {
+                        txt = `
+                            <h3 class="text-2xl md:text-3xl font-bold text-orange-600 mb-3">Application Review Required</h3>
+                            <p class="text-slate-600 text-base md:text-lg mb-2">You don't qualify for this specific free offer because your monthly salary is below the R7,500 minimum requirement.</p>
+                            <p class="text-slate-500 text-sm">However, we have other comprehensive options available on our AllLife website using the button below.</p>
+                        `;
+                    
+                        btnHtml = `
+                            <a href="https://alllife.co.za/" class="btn-grow button-link w-full md:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-3 px-8 rounded-lg shadow-lg active:scale-95">Explore Other Covers</a>
+                        `;
+                    }
+
                 } else { 
                     cssClass = 'rotate-green';
                 
@@ -954,7 +982,12 @@
         }
         
         function goToAppPart() {
-            const isQualified = tempUserData.salary && tempUserData.citizen;
+            
+            const isQualified = tempUserData.salary 
+                             && tempUserData.salary !== '<10k' 
+                             && tempUserData.citizen === 'yes'
+                             && (tempUserData.age >= 18 && tempUserData.age <= 75);
+
             const bouncer = document.getElementById('bouncerDiv');
             const formContainer = document.getElementById('realFormDiv');
             const backBtn = document.getElementById('goBackBtn');
@@ -966,11 +999,18 @@
                 }
 
                 bouncer.classList.remove('hidden');
-                
+                if (tempUserData.salary === '<10k' || tempUserData.citizen === 'no' || (tempUserData.age && (tempUserData.age < 18 || tempUserData.age > 75))) {
+                     checkEligibility(); 
+                }
+
                 const inputs = document.querySelectorAll('#bouncerDiv input, #bouncerDiv select');
                 inputs.forEach(inp => {
                     inp.classList.remove('input-highlight');
                     
+                    if (inp.id === 'gateAge' && tempUserData.age) inp.value = tempUserData.age;
+                    if (inp.id === 'gateSalary' && tempUserData.salary) inp.value = tempUserData.salary;
+                    if (inp.id === 'gateCitizen' && tempUserData.citizen) inp.value = tempUserData.citizen;
+
                     if (!inp.value) {
                         inp.classList.add('input-highlight');
                         inp.addEventListener('input', function() {
@@ -1017,7 +1057,6 @@
                 formContainer.classList.remove('hidden');
                 formContainer.classList.remove('blur-sm', 'opacity-40', 'pointer-events-none', 'select-none', 'grayscale');
                 
-                // Prefill logic (Keep existing prefill code here)
                 document.getElementById('phoneNum').value = tempUserData.contact || '';
                 document.getElementById('moneyMaker').value = tempUserData.salary || '';
                 document.getElementById('otherPhone').value = tempUserData.altContact || '';
@@ -1041,6 +1080,7 @@
             switchScreens('appPage');
         }
 
+
        function checkEligibility() {
             const ageEl = document.getElementById('gateAge');
             const salaryEl = document.getElementById('gateSalary');
@@ -1062,32 +1102,61 @@
                 return;
             }
 
-            // If we get here, fields are filled.
             const age = parseInt(ageEl.value);
             const salary = salaryEl.value;
             const citizen = citizenEl.value;
 
             let fails = [];
-            if (age < 18 || age > 75) fails.push("you are not within the 18-75 age range");
-            if (citizen === 'no') fails.push("you are not a South African citizen");
-            if (salary === '<10k') fails.push("your monthly salary is below the R10,000 minimum requirement");
+            if (age < 18 || age > 75) fails.push("age");
+            if (citizen === 'no') fails.push("citizenship");
+            
+            if (salary === '<10k') fails.push("salary");
 
             const gateDiv = document.getElementById('bouncerDiv');
 
             if (fails.length > 0) {
-                gateDiv.innerHTML = `
-                    <div class="text-center py-6">
-                        <div class="flex justify-center mb-6 scale-75 origin-top"> 
-                            <div class="cover-meter-base"><div class="cover-meter-inner"></div><div id="miniSpinny" class="cover-meter-needle"></div></div>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-red-600 mt-[-30px] mb-2">Application Review Required</h3>
-                        <p class="text-slate-600 mb-6 text-sm md:text-base">Unfortunately, you don't qualify for this specific offer because ${fails.join(' and ')}.</p>
-                        <div class="flex flex-col gap-4 items-center">
-                            <a href="https://alllife.co.za/" class="btn-grow button-link bg-slate-500">Explore Other Covers</a>
-                            <button onclick="tryAgain(${age}, '${salary}', '${citizen}')" class="text-slate-400 underline text-sm">I made a mistake, let me check again</button>
-                        </div>
-                    </div>`;
-                 setTimeout(() => { document.getElementById('miniSpinny')?.classList.add('rotate-red'); }, 100);
+                
+                const isHardFail = fails.includes("age") || fails.includes("citizenship");
+                
+                let htmlContent = '';
+                
+                if (isHardFail) {
+                    htmlContent = `
+                        <div class="text-center py-6">
+                            <div class="flex justify-center mb-6 scale-75 origin-top"> 
+                                <div class="cover-meter-base"><div class="cover-meter-inner"></div><div id="miniSpinny" class="cover-meter-needle"></div></div>
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-slate-700 mt-[-30px] mb-2">Application Unsuccessful</h3>
+                            <div class="bg-red-50 border border-red-100 rounded-lg p-4 mb-6">
+                                <p class="text-red-800 text-sm md:text-base font-medium">
+                                    Unfortunately, we cannot offer you cover at this time.
+                                </p>
+                                <p class="text-red-700 text-xs md:text-sm mt-2">
+                                    Our underwriting criteria strictly require policyholders to be South African citizens between the ages of 18 and 75.
+                                </p>
+                            </div>
+                            <button onclick="tryAgain(${age}, '${salary}', '${citizen}')" class="text-slate-400 hover:text-slate-600 underline text-sm">Mistake? Check again</button>
+                        </div>`;
+                } else {
+                    htmlContent = `
+                        <div class="text-center py-6">
+                            <div class="flex justify-center mb-6 scale-75 origin-top"> 
+                                <div class="cover-meter-base"><div class="cover-meter-inner"></div><div id="miniSpinny" class="cover-meter-needle"></div></div>
+                            </div>
+                            <h3 class="text-xl md:text-2xl font-bold text-orange-600 mt-[-30px] mb-2">Application Review Required</h3>
+                            <p class="text-slate-600 mb-6 text-sm md:text-base">You don't qualify for this specific free offer because your monthly salary is below the R7,500 minimum requirement.</p>
+                            
+                            <div class="flex flex-col gap-4 items-center">
+                                <a href="https://alllife.co.za/" class="btn-grow button-link w-full md:w-auto bg-brand-blue hover:bg-brand-blue/90 text-white font-bold py-3 px-8 rounded-lg shadow-lg">
+                                    Explore Other Covers
+                                </a>
+                                <button onclick="tryAgain(${age}, '${salary}', '${citizen}')" class="text-slate-400 hover:text-slate-600 underline text-sm">Mistake? Check again</button>
+                            </div>
+                        </div>`;
+                }
+                
+                gateDiv.innerHTML = htmlContent;
+                setTimeout(() => { document.getElementById('miniSpinny')?.classList.add('rotate-red'); }, 100);
 
             } else {
                 gateDiv.innerHTML = `
@@ -1152,8 +1221,8 @@
                             <label class="block text-sm font-bold text-slate-700 mb-1">Monthly Income</label>
                             <select id="gateSalary" class="w-full rounded-lg border-slate-300 shadow-sm p-3 border focus:ring-brand-action focus:border-brand-action text-base">
                                 <option value="">Please select</option>
-                                <option value="<10k" ${oldSalary === '<10k' ? 'selected' : ''}>R2,500 - R9,999</option>
-                                <option value="10k-19k" ${oldSalary === '10k-19k' ? 'selected' : ''}>R10,000 - R19,999</option>
+                                <option value="<10k" ${oldSalary === '<10k' ? 'selected' : ''}>R2,500 - R7,499</option>
+                                <option value="10k-19k" ${oldSalary === '10k-19k' ? 'selected' : ''}>R7,500 - R19,999</option>
                                 <option value="20k-29k" ${oldSalary === '20k-29k' ? 'selected' : ''}>R20,000 - R29,999</option>
                                 <option value="30k+" ${oldSalary === '30k+' ? 'selected' : ''}>R30,000+</option>
                             </select>
@@ -1411,13 +1480,11 @@
                 setTimeout(() => n.remove(), 500);
             }, 7000);
         }
-
-    
+ 
         setTimeout(() => {
             runPopup();
             setInterval(runPopup, 8000); 
         }, 2000);
-
 
         const idInp = document.getElementById('idNum');
         if (idInp) {
@@ -1463,12 +1530,14 @@
                 { id: 'idNum', type: 'id' },
                 { id: 'birthDate', type: 'text' },
                 { id: 'phoneNum', type: 'phone' },
+                { id: 'otherPhone', type: 'phone', optional: true },
+                { id: 'mailAddr', type: 'email' },
                 { id: 'moneyMaker', type: 'text' }
             ];
 
             let isValid = true;
             let firstErrorField = null;
-            let specificErrorMsg = "";
+            let specificErrorMsg = null;
 
             fields.forEach(field => {
                 const el = document.getElementById(field.id);
@@ -1477,18 +1546,22 @@
                     const val = el.value.trim();
 
                     if (!val) {
-                        isValid = false;
-                        highlightField(el);
-                        if (!firstErrorField) firstErrorField = el;
-                    } 
-                    else if (field.type === 'id') {
-                        if (!validateSAID(val)) {
+                        if (!field.optional) {
                             isValid = false;
                             highlightField(el);
-                            specificErrorMsg = "Invalid ID Number provided.";
                             if (!firstErrorField) firstErrorField = el;
                         }
                     }
+
+                    else {
+                        if (field.type === 'id') {
+                            if (!validateSAID(val)) {
+                                isValid = false;
+                                highlightField(el);
+                                specificErrorMsg = "Invalid ID Number provided.";
+                                if (!firstErrorField) firstErrorField = el;
+                            }
+                        }
                     else if (field.type === 'phone') {
                         const cleanPhone = val.replace(/\D/g, '');
                         if (cleanPhone.length !== 10) {
@@ -1498,17 +1571,44 @@
                             if (!firstErrorField) firstErrorField = el;
                         }
                     }
+
+                    else if (field.type === 'email') {
+                             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                             if (!emailPattern.test(val)) {
+                                 isValid = false;
+                                 highlightField(el);
+                                 specificErrorMsg = "A valid email is required to send your policy documents.";
+                                 if (!firstErrorField) firstErrorField = el;
+                             }
+                            }
                 }
+            }
             });
 
             const terms = document.getElementById('agreed');
             const termsLabel = terms.nextElementSibling;
             if (termsLabel) termsLabel.classList.remove('text-red-600', 'font-bold');
 
+            if (!isValid) {
+
+                if (specificErrorMsg) {
+                    screamAtUser(specificErrorMsg);
+                } else {
+                    screamAtUser("Please correct the highlighted fields.");
+                }
+
+                if (firstErrorField) {
+                    firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    document.getElementById('realFormDiv').scrollIntoView({ behavior: 'smooth' });
+                }
+                return;
+            }
+
             if (!terms.checked) {
-                isValid = false;
                 if (termsLabel) termsLabel.classList.add('text-red-600', 'font-bold');
-                if (!specificErrorMsg) specificErrorMsg = "Please accept the Terms & Conditions.";
+                screamAtUser("Please accept the Terms & Conditions.");
+                return;
             }
 
             if (isValid) {
@@ -1522,7 +1622,7 @@
 
                 const salaryVal = document.getElementById('moneyMaker').value;
                 if (salaryVal === '<10k') {
-                    qualFails.push("Income must be R10,000 or more");
+                    qualFails.push("Income must be R7,500 or more");
                     highlightField(document.getElementById('moneyMaker'));
                 }
 
