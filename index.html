@@ -1024,7 +1024,7 @@
             } else {
                // === SUCCESS: USER IS QUALIFIED ===
                 
-                // 1. API INTEGRATION POINT: PARTIAL LEAD CAPTURE (Step 2 Data)
+                // API INTEGRATION POINT 1: PARTIAL LEAD CAPTURE (Step 2 Data)
                 // We would like to capture this NOW, just in case they don't finish the final form.
                 
                 const partialData = {
@@ -1335,7 +1335,7 @@
         return;
     }
 
-    // API INTEGRATION POINT: REFERRAL SUBMISSION
+    // API INTEGRATION POINT 2: REFERRAL SUBMISSION
     const referralData = {
         referrerId: document.getElementById('idNum').value, // Link to the main user
         friendName: n,
@@ -1346,8 +1346,8 @@
     console.log("Referral to send:", referralData);
 
     /*
-    // TODO: IT to implement POST request here
-    fetch('https://api.alllife.co.za/v1/referrals', { ... })
+    // TODO: to implement POST request here
+    fetch('https://api.alllife.co.za/v1/referrals')
     */
 
     document.getElementById('referralForm').classList.add('hidden');
@@ -1645,10 +1645,10 @@
                 submitBtn.disabled = true; // Prevent double clicking
                 submitBtn.classList.add('opacity-75', 'cursor-wait');
 
-                // API INTEGRATION POINT: MAIN LEAD SUBMISSION
+                // API INTEGRATION POINT 3: MAIN LEAD SUBMISSION
                 // TODO: Replace this timeout with the actual API Call
                 
-                // 1. Prepare the Data Payload
+                // The Data Payload
                 const leadData = {
                     firstName: document.getElementById('fName').value,
                     lastName: document.getElementById('sName').value,
@@ -1665,7 +1665,7 @@
 
                 console.log("Ready to send to API:", leadData);
 
-                /* // EXAMPLE API CALL (For IT Team Reference):
+                /* // EXAMPLE API CALL:
                 fetch('https://api.alllife.co.za/v1/leads/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
